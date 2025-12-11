@@ -28,7 +28,7 @@ class DriverLicenseUpdateForm(forms.ModelForm):
 class DriverAddForm(UserCreationForm, DriverLicenseUpdateForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields =  UserCreationForm.Meta.fields + ("license_number",)
+        fields = UserCreationForm.Meta.fields + ("license_number",)
 
     def clean_license_number(self):
         value = self.cleaned_data["license_number"]
@@ -43,7 +43,6 @@ class DriverAddForm(UserCreationForm, DriverLicenseUpdateForm):
             )
 
         return value
-
 
 
 class CarForm(forms.ModelForm):
