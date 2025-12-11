@@ -15,7 +15,9 @@ class DriverLicenseUpdateForm(forms.ModelForm):
 
         if not re.match(pattern, value):
             raise forms.ValidationError(
-                "License number must have 3 uppercase letters followed by 5 digits. Example: ABC12345"
+                "License number must have"
+                " 3 uppercase letters followed by 5 digits."
+                " Example: ABC12345"
             )
 
         return value

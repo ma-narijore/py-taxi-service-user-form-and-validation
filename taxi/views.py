@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django import forms
+from django.shortcuts import get_object_or_404, redirect
 
 from .forms import CarForm, DriverLicenseUpdateForm
 from .models import Driver, Car, Manufacturer
@@ -119,9 +119,6 @@ class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
         )
 
 
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-
 @login_required
 def assign_me_to_car(request, pk):
     car = get_object_or_404(Car, pk=pk)
@@ -138,4 +135,3 @@ def remove_me_from_car(request, pk):
 
     car.drivers.remove(driver)
     return redirect("taxi:car-detail", pk=pk)
-
